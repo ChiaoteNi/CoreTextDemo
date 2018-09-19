@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CoreTextDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0L3-Js-VRY">
+                                <rect key="frame" x="164" y="102" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="純文字"/>
+                                <connections>
+                                    <segue destination="M0b-kR-Sdt" kind="show" id="geb-tI-1Tp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gI8-bx-kj3">
+                                <rect key="frame" x="156" y="223" width="62" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="圖文混合"/>
+                                <connections>
+                                    <segue destination="J85-SO-3eM" kind="show" id="zvP-fs-A7v"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IgT-he-bEF">
+                                <rect key="frame" x="156" y="367" width="62" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="點擊事件"/>
+                                <connections>
+                                    <segue destination="VkD-wX-yNU" kind="show" id="EfZ-iC-SfD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Grn-38-QzS">
+                                <rect key="frame" x="172" y="505" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="動畫"/>
+                                <connections>
+                                    <segue destination="58e-tl-Gne" kind="show" id="SyP-XZ-vj8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-81" y="472"/>
+        </scene>
+        <!--RtfVC-->
+        <scene sceneID="Lk0-Kh-rGX">
+            <objects>
+                <viewController id="M0b-kR-Sdt" customClass="RtfVC" customModule="CoreTextDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Avn-pJ-qc5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="wZY-0u-UQb"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9tE-FW-NM5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1171" y="-652"/>
+        </scene>
+        <!--FigureVC-->
+        <scene sceneID="L2R-J0-O1k">
+            <objects>
+                <viewController id="J85-SO-3eM" customClass="FigureVC" customModule="CoreTextDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ly7-q6-s4d">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="c1P-OD-5Mu"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lsQ-J4-YLF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1178" y="133"/>
+        </scene>
+        <!--Touch EventVC-->
+        <scene sceneID="gGJ-0D-KBN">
+            <objects>
+                <viewController id="VkD-wX-yNU" customClass="TouchEventVC" customModule="CoreTextDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WuV-rG-h5x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bht-Qn-HQ7">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bht-Qn-HQ7" firstAttribute="top" secondItem="LPe-3M-6QB" secondAttribute="top" id="a1c-rh-34J"/>
+                            <constraint firstItem="LPe-3M-6QB" firstAttribute="trailing" secondItem="bht-Qn-HQ7" secondAttribute="trailing" id="cJQ-8u-zbH"/>
+                            <constraint firstItem="LPe-3M-6QB" firstAttribute="bottom" secondItem="bht-Qn-HQ7" secondAttribute="bottom" id="jmo-RC-MuB"/>
+                            <constraint firstItem="bht-Qn-HQ7" firstAttribute="leading" secondItem="LPe-3M-6QB" secondAttribute="leading" id="uDH-uV-OT7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LPe-3M-6QB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bsr-Md-D9F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1178" y="876"/>
+        </scene>
+        <!--Animation TextVC-->
+        <scene sceneID="N37-nl-WLf">
+            <objects>
+                <viewController id="58e-tl-Gne" customClass="AnimationTextVC" customModule="CoreTextDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="buB-A1-b3d">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vux-kS-ZRe">
+                                <rect key="frame" x="47" y="80" width="281" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kag-EH-FVg" customClass="DynamicTextView" customModule="CoreTextDemo" customModuleProvider="target">
+                                <rect key="frame" x="47" y="160" width="281" height="457"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Vux-kS-ZRe" firstAttribute="top" secondItem="dDH-gE-5Gj" secondAttribute="top" constant="60" id="5ul-fQ-0Mz"/>
+                            <constraint firstItem="Vux-kS-ZRe" firstAttribute="width" secondItem="buB-A1-b3d" secondAttribute="width" multiplier="0.75" id="Qef-gq-APo"/>
+                            <constraint firstItem="Vux-kS-ZRe" firstAttribute="centerX" secondItem="buB-A1-b3d" secondAttribute="centerX" id="Tu1-I7-8kb"/>
+                            <constraint firstItem="kag-EH-FVg" firstAttribute="width" secondItem="Vux-kS-ZRe" secondAttribute="width" id="Zcg-yY-diI"/>
+                            <constraint firstItem="kag-EH-FVg" firstAttribute="top" secondItem="Vux-kS-ZRe" secondAttribute="bottom" constant="50" id="Zyx-xl-0Vi"/>
+                            <constraint firstItem="dDH-gE-5Gj" firstAttribute="bottom" secondItem="kag-EH-FVg" secondAttribute="bottom" constant="50" id="e0v-0M-qo0"/>
+                            <constraint firstItem="kag-EH-FVg" firstAttribute="centerX" secondItem="Vux-kS-ZRe" secondAttribute="centerX" id="gow-MZ-4lm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dDH-gE-5Gj"/>
+                    </view>
+                    <connections>
+                        <outlet property="dynaminTextView" destination="kag-EH-FVg" id="NKA-fb-v9H"/>
+                        <outlet property="textField" destination="Vux-kS-ZRe" id="9kL-IB-khH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2aQ-pR-f1M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1168.8" y="1718.5907046476764"/>
+        </scene>
+    </scenes>
+</document>
