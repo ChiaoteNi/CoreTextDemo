@@ -23,7 +23,7 @@ class FigureVC: BaseVC {
 
 class FigureGestureDemoView: UIView {
     
-    var imgNames: [String] = ["fig1.jpg", "fig2", "fig3.jpg"]
+    var imgNames: [String] = ["fig1.jpg", "fig2", "fig3.jpg", "fig1.jpg", "fig2", "fig3.jpg"]
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -34,13 +34,34 @@ class FigureGestureDemoView: UIView {
         context.translateBy(x: 0, y: rect.height)
         context.scaleBy(x: 1, y: -1)
         
-        // new Frame
-        let path = CGPath(rect: rect, transform: nil)
-        let attrStr = NSMutableAttributedString(string: "This collection of documents is the API reference for the Core Text framework. Core Text provides a modern, low-level programming interface for laying out text and handling fonts. The Core Text layout engine is designed for high performance, ease of use, and close integration with Core Foundation. The text layout API provides high-quality typesetting, including character-to-glyph conversion, with ligatures, kerning, and so on. The complementary Core Text font technology provides automatic font substitution (cascading), font descriptors and collections, easy access to font metrics and glyph data, and many other features. \n\n  Multicore Considerations: All individual functions in Core Text are thread safe. Font objects (CTFont, CTFontDescriptor, and associated objects) can be used simultaneously by multiple operations, work queues, or threads. However, the layout objects (CTTypesetter, CTFramesetter, CTRun, CTLine, CTFrame, and associated objects) should be used in a single operation, work queue, or thread.")
+        let padding: CGFloat = 12
         
-        for i in 0 ... 2 {
-            addRunDelegate(with: imgNames[i], attrKey: "img", insertIndex: (i+1) * 40, attribute: attrStr)
+        // new Frame
+        let path = CGPath(
+            rect: .init(
+                x: rect.minX + padding,
+                y: rect.minY + padding,
+                width: rect.width - padding * 2,
+                height: rect.height - padding * 2),
+            transform: nil
+        )
+        let attrStr = NSMutableAttributedString(string: "This 我是 of 😂 is the API reference for the Core Text framework. Core Text c哈哈哈哈 a 😂😂😂😂modern, low-level programming interface for laying out text and handling fonts. The Core Text layout engine is designed for high performance, ease of use, and close integration with Core Foundation. The text layout API provides high-quality typesetting, including character-to-glyph conversion, with ligatures, kerning, and so on. The complementary Core Text font technology provides automatic font substitution (cascading), font descriptors and collections, easy access to font metrics and glyph data, and many other features. \n\n  Multicore Considerations: All individual functions in Core Text are thread safe. Font objects (CTFont, CTFontDescriptor, and associated objects) can be used simultaneously by multiple operations, work queues, or threads. However, the layout objects (CTTypesetter, CTFramesetter, CTRun, CTLine, CTFrame, and associated objects) should be used in a single operation, work queue, or thread.")
+        
+        for i in 0 ... 5 {
+            addRunDelegate(
+                with: imgNames[i],
+                attrKey: "img",
+                insertIndex: (i + 1) * 25,
+                attribute: attrStr
+            )
         }
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        paragraphStyle.alignment = .center
+        
+        attrStr.addAttribute(.paragraphStyle, value: paragraphStyle, range:NSMakeRange(0, attrStr.length))
+        attrStr.addAttribute(.font, value: UIFont.systemFont(ofSize: 17, weight: .medium), range:NSMakeRange(0, attrStr.length))
         
         let frameSetter = CTFramesetterCreateWithAttributedString(attrStr as CFAttributedString)
         let range = CFRange.zero//(location: 0, length: attrStr.length)
@@ -55,7 +76,7 @@ class FigureGestureDemoView: UIView {
         for i in 0 ..< count {
             let line = lines[i] as! CTLine
             let origin = origins[i]
-            context.textPosition = origin
+            context.textPosition = .init(x: padding + origin.x, y: origin.y)
 
             let runs: NSArray = CTLineGetGlyphRuns(line)
             runs.forEach { ctRun in
@@ -68,9 +89,26 @@ class FigureGestureDemoView: UIView {
                 let attr = CTRunGetAttributes(run) as NSDictionary
                 let width = CGFloat(CTRunGetTypographicBounds(run, CFRange.zero, &runAscent, &runDescent, nil))
                 let leftSpacing = CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, nil)
-                let runRect = CGRect(x: origin.x + leftSpacing, y: origin.y - runDescent, width: width, height: runAscent)
+                let runRect = CGRect(
+                    x: padding + origin.x + leftSpacing,
+                    y: origin.y - runDescent,
+                    width: width,
+                    height: runAscent
+                )
                 
-                drawImage(runRect: runRect, context: context, attributes: attr)
+                drawImage(
+                    runRect: runRect,
+                    context: context,
+                    attributes: attr
+                )
+                
+                let markRect = CGRect(
+                    x: origin.x + leftSpacing + padding,
+                    y: bounds.height - origin.y - runAscent + runDescent,
+                    width: width,
+                    height: runAscent
+                )
+                markEachCTRun(with: markRect)
             }
         }
     }
@@ -80,11 +118,11 @@ class FigureGestureDemoView: UIView {
         var callBack = CTRunDelegateCallbacks(version: kCTRunDelegateCurrentVersion, dealloc: { refCon in
             print("RunDelegate dealloc!")
         }, getAscent: { refCon -> CGFloat in // 高度
-            return 100
+            return 22
         }, getDescent: { refCon -> CGFloat in // 底部距離
             return 0
         }, getWidth: { refCon -> CGFloat in // 寬度
-            return 100
+            return 22
         })
         
         // 1. 為圖片设置CTRunDelegate, 由delegate決定這個CTRun(預留給圖片)的大小
@@ -103,5 +141,17 @@ class FigureGestureDemoView: UIView {
         guard let imgName = attributes.object(forKey: "img") as? String else { return }
         guard let img = UIImage(named: imgName)?.cgImage else { return }
         context.draw(img, in: runRect)
+    }
+    
+    private func markEachCTRun(with rect: CGRect) {
+        let markView: UIView = .init(frame: rect)
+        
+        let index: Int = Int(arc4random_uniform(4))
+        let colors: [UIColor] = [.red, .blue, .green]
+        let color: UIColor = colors[safe: index] ?? .yellow
+        
+        markView.backgroundColor = color
+        markView.alpha = 0.5
+        addSubview(markView)
     }
 }
